@@ -9,7 +9,7 @@ Food.com is a popular recipe-sharing website allowing users to share and rate re
 Recipes is a dataset with 83,782 rows and 13 columns.
 
 Of the columns, we are interested in: 
-- ‘id’: Recipe ID
+- '‘id’': Recipe ID
 - ‘minutes’: Minutes to prepare recipe
 - ‘submitted’: Date recipe was submitted
 - ‘tags’: Food.com tags for recipe
@@ -30,6 +30,11 @@ We are interested in:
 ---
 
 ## Data Cleaning and Exploratory Data Analysis
+1. Left merge the recipes and interactions on 'id' and 'recipe_id'
+2. Filled all 0 ratings with np.nan. This is appropriate, because the 0 ratings do not represent a bad review, but instead a review where the author compromised the recipe.
+3. Add column ‘average_rating’ containing average rating per recipe
+4. 
+5. Converted the date and submitted columns into pandas datetime.
 
 ---
 
