@@ -43,13 +43,20 @@ We are interested in:
 
 After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows and 23 columnns `recipes_df.head()`:
 
+
+<iframe
+  src="assets/recipes-df.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 <iframe
   src="assets/reviews-time.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
-
 
 ---
 
