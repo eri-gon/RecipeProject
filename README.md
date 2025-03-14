@@ -43,14 +43,14 @@ We are interested in:
 
 After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows and 23 columnns `recipes_df.head()`:
 
-
 <iframe
-  src="assets/recipes-df.html"
+  src="assets/recipes_df.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
 
+### Univariate Analysis
 <iframe
   src="assets/reviews-time.html"
   width="800"
@@ -58,13 +58,47 @@ After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows
   frameborder="0"
 ></iframe>
 
+### Bivariate Analysis
+<iframe
+  src="assets/agg-df.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+### Interesting Aggregates
+<iframe
+  src="assets/rating-time.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 ---
 
 ## Assessment of Missingness
+<iframe
+  src="assets/perm1.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+<iframe
+  src="assets/perm2.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ---
 
 ## Hypothesis Testing
+<iframe
+  src="assets/hypo.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 ---
 
