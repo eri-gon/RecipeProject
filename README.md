@@ -9,7 +9,7 @@ Food.com is a popular recipe-sharing website allowing users to share and rate re
 Recipes is a dataset with 83,782 rows and 13 columns.
 
 Of the columns, we are interested in: 
-- '‘id’': Recipe ID
+- `‘id’`: Recipe ID
 - ‘minutes’: Minutes to prepare recipe
 - ‘submitted’: Date recipe was submitted
 - ‘tags’: Food.com tags for recipe
@@ -33,8 +33,11 @@ We are interested in:
 1. Left merge the recipes and interactions on 'id' and 'recipe_id'
 2. Filled all 0 ratings with np.nan. This is appropriate, because the 0 ratings do not represent a bad review, but instead a review where the author compromised the recipe.
 3. Add column ‘average_rating’ containing average rating per recipe
-4. 
+4. The nutrition column was originally in the format of [calories, total fat, ...]Split the nutrition column into individual columns of floats for each nutrient.
 5. Converted the date and submitted columns into pandas datetime.
+6. Created a col submitted_past_2013 as booleans on whether a recipe was submitted before or after 2013 based on the 'submitted' column. 
+7. I looked at the first 100 most used tags and extracted 5 tags I thought to be relevant to time, creating 5 columns with booleans of whether each row had the tag. The columns are: 'easy', 'equipment', 'occasion', 'weeknight', 'from-scratch'.
+8. The 'tags' column was in the format of lists. Using 'eval' and '' '.join()'
 
 ---
 
