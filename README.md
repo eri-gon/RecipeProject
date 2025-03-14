@@ -1,3 +1,6 @@
+---
+title: "Time is of the e-scent: Time Relationships in Food.com"
+---
 # Time is of the e-scent: Time Relationships in Food.com
 by Eric Gan
 
@@ -37,7 +40,13 @@ We are interested in:
 5. Converted the date and submitted columns into pandas datetime.
 6. Created a col submitted_past_2013 as booleans on whether a recipe was submitted before or after 2013 based on the 'submitted' column. 
 7. I looked at the first 100 most used tags and extracted 5 tags I thought to be relevant to time, creating 5 columns with booleans of whether each row had the tag. The columns are: 'easy', 'equipment', 'occasion', 'weeknight', 'from-scratch'.
-8. The 'tags' column was in the format of lists. Using 'eval' and '' '.join()'
+8. The 'tags' column was in the format of lists. Using 'eval' and '' '.join()', I convert the 'tags' into string corpuses. This will be used later in my prediction model. 
+9. Created a min_category column that categorizes the data depending on the minutes in the following bins: 0-30, 30-60, 60-90, 90-120, and 120+
+10. Drop all the unnecessary rows
+
+After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows and 23 columns.
+
+
 
 ---
 
