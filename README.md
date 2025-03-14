@@ -43,14 +43,12 @@ We are interested in:
 
 After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows and 23 columnns `recipes_df.head()`:
 
-|   ID    | Minutes | Submitted           | Tags                            | Steps | Ingredients | Date                | Rating | Avg Rating | Easy  | Equipment | Occasion | Weeknight | From-Scratch | Calories | Total Fat | Sugar | Sodium | Protein | Sat. Fat | Carbs | Submitted Past 2013 | Min Category |
-|---------|---------|---------------------|---------------------------------|-------|------------|---------------------|--------|------------|-------|-----------|----------|-----------|--------------|----------|-----------|-------|--------|---------|----------|-------|---------------------|--------------|
-| 333281  | 40      | 2008-10-27 00:00:00 | Desserts, Snacks, Brownies     | 10    | 9          | 2008-11-19 00:00:00 | 4      | 4          | False | False     | False    | False     | False        | 138.4    | 10        | 50    | 3      | 3       | 19       | 6     | False               | 30-60        |
-| 453467  | 45      | 2011-04-11 00:00:00 | Canadian, British-Columbian    | 12    | 11         | 2012-01-26 00:00:00 | 5      | 5          | False | False     | False    | False     | False        | 595.1    | 46        | 211   | 22     | 13      | 51       | 26    | False               | 30-60        |
-| 306168  | 40      | 2008-05-30 00:00:00 | Side-Dishes, Vegetables        | 6     | 9          | 2008-12-31 00:00:00 | 5      | 5          | True  | False     | False    | False     | False        | 194.8    | 20        | 6     | 32     | 22      | 36       | 3     | False               | 30-60        |
-| 306168  | 40      | 2008-05-30 00:00:00 | Side-Dishes, Vegetables        | 6     | 9          | 2009-04-13 00:00:00 | 5      | 5          | True  | False     | False    | False     | False        | 194.8    | 20        | 6     | 32     | 22      | 36       | 3     | False               | 30-60        |
-| 306168  | 40      | 2008-05-30 00:00:00 | Side-Dishes, Vegetables        | 6     | 9          | 2013-08-02 00:00:00 | 5      | 5          | True  | False     | False    | False     | False        | 194.8    | 20        | 6     | 32     | 22      | 36       | 3     | False               | 30-60        |
-
+<iframe
+  src="assets/reviews-time.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 
 ---
