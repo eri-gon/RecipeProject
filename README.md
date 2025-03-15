@@ -1,7 +1,5 @@
-# Time is of the E-scent: Time Relationships in Food.com
-by Eric Gan 
-
----
+# Time is of the E-scent: Time Relationships in Food.com 
+by Eric Gan
 
 ## Introduction
 Food.com is a popular recipe-sharing website allowing users to share and rate recipes. In many rating sites, I have observed grade inflation, where, over time, ratings become more lenient. I wondered: How did time affect recipes and reviews on the site? To answer this question, I analyzed two datasets of recipes and reviews of Food.com posted since 2008.
