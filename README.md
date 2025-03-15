@@ -152,16 +152,16 @@ Time is of the essence and I want to be able to predict how long a recipe would 
 ---
 
 ## Baseline Model
-I used a random forest classifier with max_depth of 3 and 100 trees. I used two columns to make features for the model. First, I one hot encoded submitted_past_2013. Second, I used Countvectorizer to transform tags into features. I used these features, because I noticed that there was a difference between recipes submitted past and before 2013. I used tags, because there are many tags that can be used to determine the time category of each recipe. Tags such as 'easy', 'oven' and '60-min-or-less'. 
+I used a random forest classifier with max_depth of 3 and 100 trees. I used two columns to make features for the model. `'tags'` is qualitative, while `'submitted_past_2013'` was derived from a quantitative column of `'submitteds'`. First, I one hot encoded submitted_past_2013. Second, I used Countvectorizer to transform tags into features. I used these features, because I noticed that there was a difference between recipes submitted past and before 2013. I used tags, because there are many tags that can be used to determine the time category of each recipe. Tags such as 'easy', 'oven' and '60-min-or-less'. 
 
 After fitting the model, the accuracy score was **0.6641**. I think this is an acceptable accuracy, because my model performs better than random guessing. 
 
 ---
 
 ## Final Model
-In my final model, I added two extra features, n_steps and n_ingredients. Furthermore, I used grid search to optimize the max_depth with depth 3,15,19,23,27. The main reason I chose these hyperparameters was because my choice of Countvectorizing each recipe tag was extremely time consuming as it created over 800 features. Using any tree depth greater than 20 made my computer struggle. 
+In my final model, I added two extra features, n_steps and n_ingredients. I chose these features, because I assumed that the more complicated a recipe is with more ingredients and steps, the more likely the recipe would take a longer time. Furthermore, I used grid search to optimize the max_depth with depth 3,15,19,23,27. The main reason I chose these hyperparameters was because my choice of Countvectorizing each recipe tag was extremely time consuming as it created over 800 features. Using any tree depth greater than 20 made my computer struggle. 
 
-My final model used a tree depth of 27. The accuracy of the model increased to **0.7837**. This makes sense, because increasing the tree depth would in turn increase the accuracy of the model when it is not overtraining. 
+My final model used a tree depth of 27. The accuracy of the model increased to **0.7837**. This makes sense, because increasing the tree depth would in turn increase the accuracy of the model when it is not overfitted. 
 
 ---
 
@@ -183,6 +183,6 @@ Group X represents recipes posted after 2013. Group Y represents recipes posted 
   frameborder="0"
 ></iframe>
 
-After performing the permutation test, we get a *p-value* of **0.04**, meaning we reject the null hypothesis. This shows that My final model does have a biased accuracy based on whether a recipe was submitted before or after 2013. 
+After performing the permutation test, we get a *p-value* of **0.04**, meaning we reject the null hypothesis. This shows that my final model does have a biased accuracy based on whether a recipe was submitted before or after 2013. 
 
 ---
