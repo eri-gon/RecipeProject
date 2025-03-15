@@ -53,6 +53,7 @@ The first distribution I was interested in was the distribution of `'date'`. The
 <iframe
   src="assets/reviews-time.html"
   width="800"
+  height = "500"
   frameborder="0"
 ></iframe>
 This graph shows the amount of reviews over time. Food.com’s reviews peaked in June 2010. Around 2013, there has been a significant decrease in reviews. Just through distribution of reviews alone, there is a clear difference between before and after 2013. 
