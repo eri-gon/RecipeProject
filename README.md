@@ -55,7 +55,6 @@ The first distribution I was interested in was the distribution of `'date'`. The
 <iframe
   src="assets/reviews-time.html"
   width="800"
-  height="600"
   frameborder="0"
 ></iframe>
 This graph shows the amount of reviews over time. Food.com’s reviews peaked in June 2010. Around 2013, there has been a significant decrease in reviews. Just through distribution of reviews alone, there is a clear difference between before and after 2013. 
@@ -105,7 +104,7 @@ I believe that `‘review’` is *NMAR*. Recipes with `‘review’` missing are
   frameborder="0"
 ></iframe>
 
-I got a *p-value* of 0. I *reject* the null hypothesis. This means that the missingness of `'rating'` does depend on the number of ingredients. This makes sense, because the more ingredients, the more likely the user would compromise the recipe by not having the proper ingredient. 
+I got a *p-value* of **0**. I *reject* the null hypothesis. This means that the missingness of `'rating'` does depend on the number of ingredients. This makes sense, because the more ingredients, the more likely the user would compromise the recipe by not having the proper ingredient. 
 
 *Null hypothesis:* The missingness of `'rating'` does not depend on the duration of the recipe. 
 
@@ -122,7 +121,7 @@ I got a *p-value* of 0. I *reject* the null hypothesis. This means that the miss
   frameborder="0"
 ></iframe>
 
-I got a *p-value* of 0.106. I *fail to reject* the null hypothesis. This means that the missingness of `'rating'` is not dependent on `'minutes'`. 
+I got a *p-value* of **0.106**. I *fail to reject* the null hypothesis. This means that the missingness of `'rating'` is not dependent on `'minutes'`. 
 
 ---
 
@@ -144,7 +143,7 @@ To figure out if time of recipe submission had an influence on the rating it rec
   frameborder="0"
 ></iframe>
 
-Based on the hypothesis test, with a *p-value* of 0, we reject the null hypothesis. This suggests that the ratings after 2013 was different from the distribution of ratings before 2013. 
+Based on the hypothesis test, with a *p-value* of **0**, we reject the null hypothesis. This suggests that the ratings after 2013 was different from the distribution of ratings before 2013. 
 
 ---
 
@@ -156,14 +155,14 @@ Time is of the essence and I want to be able to predict how long a recipe would 
 ## Baseline Model
 I used a random forest classifier with max_depth of 3 and 100 trees. I used two columns to make features for the model. First, I one hot encoded submitted_past_2013. Second, I used Countvectorizer to transform tags into features. I used these features, because I noticed that there was a difference between recipes submitted past and before 2013. I used tags, because there are many tags that can be used to determine the time category of each recipe. Tags such as 'easy', 'oven' and '60-min-or-less'. 
 
-After fitting the model, the accuracy score was [BLANK]
+After fitting the model, the accuracy score was **0.6641**. I think this is an acceptable accuracy, because my model performs better than random guessing. 
 
 ---
 
 ## Final Model
 In my final model, I added two extra features, n_steps and n_ingredients. Furthermore, I used grid search to optimize the max_depth with depth 3,15,19,23,27. The main reason I chose these hyperparameters was because my choice of Countvectorizing each recipe tag was extremely time consuming as it created over 800 features. Using any tree depth greater than 20 made my computer struggle. 
 
-My final model used a tree depth of 27. The accuracy of the model increased to [BLANK]
+My final model used a tree depth of 27. The accuracy of the model increased to **0.7837**. This makes sense, because increasing the tree depth would in turn increase the accuracy of the model when it is not overtraining. 
 
 ---
 
@@ -185,6 +184,6 @@ Group X represents recipes posted after 2013. Group Y represents recipes posted 
   frameborder="0"
 ></iframe>
 
-After performing the permutation test, we get a p-value of [blank], meaning we fail to reject the null hypothesis. This shows that My final model does not have biased accuracy for recipes before nor after 2013. 
+After performing the permutation test, we get a *p-value* of **0.04**, meaning we reject the null hypothesis. This shows that My final model does have a biased accuracy based on whether a recipe was submitted before or after 2013. 
 
 ---
