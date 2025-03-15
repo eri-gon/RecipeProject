@@ -1,4 +1,4 @@
-# Time is of the e-scent: Time Relationships in Food.com
+# Time is of the E-scent: Time Relationships in Food.com
 by Eric Gan
 
 ---
@@ -51,37 +51,69 @@ After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows
 ></iframe>
 
 ### Univariate Analysis
+The first distribution I was interested in was the distribution of `'date'`. The graph is below:
 <iframe
   src="assets/reviews-time.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+This graph shows the amount of reviews over time. Food.com’s reviews peaked in June 2010. Around 2013, there has been a significant decrease in reviews. Just through distribution of reviews alone, there is a clear difference between before and after 2013. 
 
 ### Bivariate Analysis
-<iframe
-  src="assets/agg-df.html"
-  width="800"
-  height="600"
-  frameborder="0"
-></iframe>
-
-### Interesting Aggregates
+Then I wanted to see how time affected the ratings of the reviews. I did this by graphing `'rating'` over `'date'`:
 <iframe
   src="assets/rating-time.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+Because of how many ratings there were, I needed to average the ratings per month to declutter the graph. This graph shows the average rating of all the reviews per month. The reviews significantly fluctuate per month, but in general, it seems to be going down. 
+
+### Interesting Aggregates
+We group the recipes_df by whether a recipe was submitted before or after 2013. 
+<iframe
+  src="assets/agg-df.html"
+  width="800"
+  frameborder="0"
+></iframe>
+There are some cool trends seen already. It seems that after 2013, the complexity of recipes were increasing, with average steps and ingredients increased. Most of the tags decreased in usage. Furthermore, all average nutrition increased. 
+
 ---
 
 ## Assessment of Missingness
+The three columns in the combined dataframe that have missing values are `description`, `rating`, and `review`.
+
+### NMAR missingness
+I believe that `‘review’` is *NMAR*. Recipes with `‘review’` missing are recipes that never received a review from Food.com users. This would mean that users found the recipe not memorable enough to leave a typed review behind. As a result, the value of the review is the cause of its missingness. 
+
+### Missingness Dependency
+`‘rating’` missingness is caused whenever a user leaves a 0 review which means that the recipe was compromised in some way. Using permutation testing, I checked if the rating's missingness is caused by `n_ingredients` or `minutes` with permutation testing:
+
+*Null hypothesis:* The missingness of ratings does not depend on the number of ingredients in the recipe. 
+
+*Alternate Hypothesis:* The missingness of ratings does depend on the number of ingredients. 
+
+*Test statistic:* The absolute mean difference between the group with missing ratings and the group without missing ratings. 
+
+*Significance level:* 0.05
+
 <iframe
   src="assets/perm1.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+I got a *p-value* of 0. I *reject* the null hypothesis. This means that the missingness of `'rating'` does depend on the number of ingredients. This makes sense, because the more ingredients, the more likely the user would compromise the recipe by not having the proper ingredient. 
+
+*Null hypothesis:* The missingness of `'rating'` does not depend on the duration of the recipe. 
+
+*Alternate hypothesis:* The missingness of `'rating'` does depend on the duration of the recipe. 
+
+*Test statistic:* The absolute mean difference between the group with missing `'rating'` and the group without missing `'rating'`. 
+
+*Test statistic:* 0.05
 
 <iframe
   src="assets/perm2.html"
@@ -90,9 +122,21 @@ After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows
   frameborder="0"
 ></iframe>
 
+I got a *p-value* of 0.106. I *fail to reject* the null hypothesis. This means that the missingness of `'rating'` is not dependent on `'minutes'`. 
+
 ---
 
 ## Hypothesis Testing
+To figure out if time of recipe submission had an influence on the rating it recieved, I did a hypothesis test: 
+
+*Null hypothesis:* The distribution of ratings posted after 2013 and the distribution of ratings posted before 2013 are the same.
+
+*Alternate hypothesis:* The distribution of ratings posted  after 2013 and the distribution of ratings posted before 2013 are different. 
+
+*Test statistic:* Absolute mean difference between rating posted after 2013 and rating posted before 2013
+
+*Test statistic:* 0.05
+
 <iframe
   src="assets/hypo.html"
   width="800"
@@ -100,9 +144,12 @@ After cleaning the entire dataframe, I end up with a dataframe with 234,428 rows
   frameborder="0"
 ></iframe>
 
+Based on the hypothesis test, with a *p-value* of 0, we reject the null hypothesis. This suggests that the ratings after 2013 was different from the distribution of ratings before 2013. 
+
 ---
 
 ## Framing a Prediction Problem
+Time is of the essence and I want to be able to predict how long a recipe would take. To do this, I will be creating a multiclass classification problem. Each recipe has already been given a `'min_category'` that was derived from how many minutes the recipe took. I did a 0.8 to 0.2 training test split. 
 
 ---
 
