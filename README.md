@@ -1,4 +1,4 @@
-# Time is of the E-scent: Time Relationships in Food.com 
+# Time is of the E-scent: Time Relationships in Food.com
 by Eric Gan
 
 ## Introduction
