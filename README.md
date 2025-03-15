@@ -113,7 +113,7 @@ I got a *p-value* of 0. I *reject* the null hypothesis. This means that the miss
 
 *Test statistic:* The absolute mean difference between the group with missing `'rating'` and the group without missing `'rating'`. 
 
-*Test statistic:* 0.05
+*Significance level:* 0.05
 
 <iframe
   src="assets/perm2.html"
@@ -135,7 +135,7 @@ To figure out if time of recipe submission had an influence on the rating it rec
 
 *Test statistic:* Absolute mean difference between rating posted after 2013 and rating posted before 2013
 
-*Test statistic:* 0.05
+*Significance level:* 0.05
 
 <iframe
   src="assets/hypo.html"
@@ -149,18 +149,42 @@ Based on the hypothesis test, with a *p-value* of 0, we reject the null hypothes
 ---
 
 ## Framing a Prediction Problem
-Time is of the essence and I want to be able to predict how long a recipe would take. To do this, I will be creating a multiclass classification problem. Each recipe has already been given a `'min_category'` that was derived from how many minutes the recipe took. I did a 0.8 to 0.2 training test split. 
+Time is of the essence and I want to be able to predict how long a recipe would take. To do this, I will be creating a multiclass classification problem. Each recipe has already been given a `'min_category'` that was derived from how many minutes the recipe took. I did a 0.8 to 0.2 training test split. I used accuracy as the metric to evaluate my model, because I am only interested in the overall correctness of my model, and not interested in the recall nor percision. 
 
 ---
 
 ## Baseline Model
+I used a random forest classifier with max_depth of 3 and 100 trees. I used two columns to make features for the model. First, I one hot encoded submitted_past_2013. Second, I used Countvectorizer to transform tags into features. I used these features, because I noticed that there was a difference between recipes submitted past and before 2013. I used tags, because there are many tags that can be used to determine the time category of each recipe. Tags such as 'easy', 'oven' and '60-min-or-less'. 
+
+After fitting the model, the accuracy score was [BLANK]
 
 ---
 
 ## Final Model
+In my final model, I added two extra features, n_steps and n_ingredients. Furthermore, I used grid search to optimize the max_depth with depth 3,15,19,23,27. The main reason I chose these hyperparameters was because my choice of Countvectorizing each recipe tag was extremely time consuming as it created over 800 features. Using any tree depth greater than 20 made my computer struggle. 
+
+My final model used a tree depth of 27. The accuracy of the model increased to [BLANK]
 
 ---
 
 ## Fairness Analysis
+I wondered if there was a difference in accuracy between my models predictions on recipes before and after 2013. 
+
+Group X represents recipes posted after 2013. Group Y represents recipes posted before 2013. 
+
+*Null hypothesis:* The model is fair. The accuracy is the same for both groups. 
+
+*Alternative hypothesis:* The model is unfair. The accuracy for predicting the groups are different. 
+
+*Significance level:* 0.05
+
+<iframe
+  src="assets/fair.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+After performing the permutation test, we get a p-value of [blank], meaning we fail to reject the null hypothesis. This shows that My final model does not have biased accuracy for recipes before nor after 2013. 
 
 ---
